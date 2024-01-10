@@ -1,4 +1,5 @@
 import React from "react";
+import Add from "../images/addAvatar.png";
 
 const Register = (): React.JSX.Element => {
   return (
@@ -24,8 +25,17 @@ const Register = (): React.JSX.Element => {
           />
           <input
             className="p-4 border-b border-[#a7bcff] w-64 placeholder-gray-400"
+            style={{ display: "none" }}
             type="file"
+            id="file"
           />
+          <label
+            className="flex items-center gap-2.5 text-[#8da4f1] text-xs cursor-pointer"
+            htmlFor="file"
+          >
+            <img src={Add} alt="" width={"32px"} />
+            <span>Add an avatar</span>
+          </label>
           <button className="bg-[#7b96ec] text-white p-2.5 font-bold border-none cursor-pointer">
             Sign Up
           </button>
