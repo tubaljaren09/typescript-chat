@@ -1,10 +1,10 @@
 import React from "react";
-import Register from "./pages/Register";
+import Home from "./pages/Home";
 
 const App = (): React.JSX.Element => {
   return (
     <div>
-      <Register />
+      <Home />
     </div>
   );
 };
