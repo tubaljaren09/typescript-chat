@@ -9,7 +9,7 @@ import {
 } from "firebase/storage";
 import { doc, setDoc } from "firebase/firestore";
 import { db } from "../firebase";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import Add from "../images/addAvatar.png";
 
 type Form = {
@@ -79,9 +79,9 @@ const Register = (): React.JSX.Element => {
               break;
           }
         },
-        (error) => {
-          setErr(true);
-        },
+        // (error) => {
+        //   setErr(true);
+        // },
         () => {
           // Handle successful uploads on complete
           // For instance, get the download URL: https://firebasestorage.googleapis.com/...
@@ -158,7 +158,7 @@ const Register = (): React.JSX.Element => {
           {err && <span>Something went wrong...</span>}
         </form>
         <p className="text-[#5d5b8d] font-xs mt-2.5">
-          You do have an account? Login
+          You do have an account? <Link to="/login">Login</Link>
         </p>
       </div>
     </div>
