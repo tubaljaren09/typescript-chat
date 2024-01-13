@@ -20,14 +20,9 @@ type UserType = {
   uid: string;
 };
 
-type User = {
-  user: UserType;
-  setUser: React.Dispatch<React.SetStateAction<User | null>>;
-};
-
 const Search = (): React.JSX.Element => {
   const [username, setUsername] = useState<string>("");
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState<UserType | null>(null);
   const [err, setErr] = useState<boolean>(false);
 
   const { currentUser } = useContext(AuthContext);
@@ -41,8 +36,7 @@ const Search = (): React.JSX.Element => {
     try {
       const querySnapshot = await getDocs(q);
       querySnapshot.forEach((doc) => {
-        const data = doc.data() as UserType;
-        setUser({ user: data, setUser });
+        setUser(doc.data() as UserType);
       });
     } catch (err) {
       setErr(true);
@@ -56,9 +50,9 @@ const Search = (): React.JSX.Element => {
     // Check if chat exists
     if (currentUser && user) {
       const combinedId =
-        currentUser?.uid > user?.user.uid
-          ? currentUser.uid + user?.user.uid
-          : user?.user.uid + currentUser?.uid;
+        currentUser?.uid > user.uid
+          ? currentUser.uid + user.uid
+          : user.uid + currentUser?.uid;
       try {
         const chatDocRef = doc(db, "chats", combinedId);
         const res = await getDoc(chatDocRef);
@@ -70,14 +64,14 @@ const Search = (): React.JSX.Element => {
           // create user chats
           await updateDoc(doc(db, "userChats", currentUser.uid), {
             [combinedId + ".userInfo"]: {
-              uid: user.user.uid,
-              displayName: user.user.displayName,
-              photoURL: user.user.photoURL,
+              uid: user.uid,
+              displayName: user.displayName,
+              photoURL: user.photoURL,
             },
             [combinedId + ".date"]: serverTimestamp(),
           });
 
-          await updateDoc(doc(db, "userChats", user.user.uid), {
+          await updateDoc(doc(db, "userChats", user.uid), {
             [combinedId + ".userInfo"]: {
               uid: currentUser.uid,
               displayName: currentUser.displayName,
@@ -114,11 +108,11 @@ const Search = (): React.JSX.Element => {
         >
           <img
             className="w-14 h-14 rounded-[50%] object-cover"
-            src={user?.user.photoURL}
+            src={user.photoURL}
             alt=""
           />
           <div>
-            <span>{user?.user.displayName}</span>
+            <span>{user.displayName}</span>
           </div>
         </div>
       )}

@@ -79,9 +79,10 @@ const Register = (): React.JSX.Element => {
               break;
           }
         },
-        // (error) => {
-        //   setErr(true);
-        // },
+        (error) => {
+          setErr(true);
+          console.log(error);
+        },
         () => {
           // Handle successful uploads on complete
           // For instance, get the download URL: https://firebasestorage.googleapis.com/...
