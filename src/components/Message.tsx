@@ -31,7 +31,6 @@ const Message = ({ message }: MessageProp): React.JSX.Element => {
               className="w-10 h-10 rounded-[50%] object-cover"
               src={currentUser?.photoURL ?? undefined}
             />
-            <span>just now</span>
           </div>
           <div className="max-w-[80%] flex flex-col gap-2.5 items-end">
             <p className="bg-[#8da4f1] text-white py-2.5 px-5 rounded-tl-xl rounded-br-xl rounded-bl-xl max-w-max">
@@ -50,7 +49,6 @@ const Message = ({ message }: MessageProp): React.JSX.Element => {
               src={data.user.photoURL}
               alt=""
             />
-            <span>just now</span>
           </div>
           <div className="max-w-[80%] flex flex-col gap-2.5">
             <p className="bg-white py-2.5 px-5 rounded-tr-xl rounded-br-xl rounded-bl-xl max-w-max">

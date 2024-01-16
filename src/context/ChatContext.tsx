@@ -69,6 +69,8 @@ interface ChatState {
 interface ChangeUserAction {
   type: "CHANGE_USER";
   payload: {
+    displayName: string;
+    photoURL: string;
     uid: string;
     // Add other properties specific to your payload
   };
@@ -90,7 +92,7 @@ export const ChatContextProvider = ({ children }: ChatContextProviderProps) => {
 
   const INITIAL_STATE: ChatState = {
     chatId: "null",
-    user: {},
+    user: { displayName: "", photoURL: "", uid: "" },
   };
 
   const chatReducer = (state: ChatState, action: ActionTypes): ChatState => {
@@ -98,7 +100,11 @@ export const ChatContextProvider = ({ children }: ChatContextProviderProps) => {
       case "CHANGE_USER":
         if (currentUser) {
           return {
-            user: action.payload,
+            user: {
+              displayName: action.payload.displayName,
+              photoURL: action.payload.photoURL,
+              uid: action.payload.uid,
+            },
             chatId:
               currentUser.uid > action.payload.uid
                 ? currentUser.uid + action.payload.uid

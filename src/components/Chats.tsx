@@ -62,7 +62,7 @@ const Chats = (): React.JSX.Element => {
         })
         .map((chat) => (
           <div
-            className="flex items-center p-2.5 gap-2.5 text-white cursor-pointer hover:bg-[#2f2d52]"
+            className="flex items-center p-2.5 gap-2.5 text-white cursor-pointer hover:bg-[#2f2d52] corsair:flex-col corsair:justify-center corsair:text-center"
             key={chat[0]}
             onClick={() => handleSelect(chat[1].userInfo)}
           >

@@ -111,7 +111,7 @@ const Register = (): React.JSX.Element => {
   return (
     <div className="bg-[#a7bcff] h-screen flex items-center justify-center">
       <div className="bg-white py-5 px-16 rounded-xl flex flex-col gap-2.5 items-center">
-        <span className="text-[#5d5b8d] font-bold text-2xl">Lama Chat</span>
+        <span className="text-[#5d5b8d] font-bold text-2xl">Yay Chat</span>
         <span className="text-[#5d5b8d] text-xs">Register</span>
         <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
           <input

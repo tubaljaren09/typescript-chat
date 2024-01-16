@@ -8,7 +8,7 @@ const Navbar = (): React.JSX.Element => {
 
   return (
     <div className="flex items-center bg-[#2f2d52] h-14 p-2.5 justify-between text-[#ddddf7]">
-      <span className="font-bold">Lama Chat</span>
+      <span className="font-bold">Yay Chat</span>
       <div className="flex items-center gap-2.5">
         <img
           className="bg-[#ddddf7] rounded-[50%] object-cover"

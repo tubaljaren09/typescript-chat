@@ -3,6 +3,9 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {},
+    screens: {
+      corsair: { max: "640px" },
+    },
   },
   plugins: [],
 };
